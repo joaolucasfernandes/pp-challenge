@@ -22,4 +22,4 @@ jobs:
 
     - name: Execute pytest tests
       run: |
-        pytest -v -n 15
+        pytest -v -n 15 --reruns 5 --reruns-delay 1

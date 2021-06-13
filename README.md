@@ -55,7 +55,7 @@ pip install -r requirements.txt`
 
 **Após instalar o projeto e suas dependências, dentro da pasta raiz do projeto (pp-challenge), execute:**
 
- `pytest -v -n 15`
+ `pytest -v -n 15 --reruns 5 --reruns-delay 1`
 
 ## Estrutura do Projeto
 ```
