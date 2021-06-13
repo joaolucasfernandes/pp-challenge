@@ -2,3 +2,4 @@ requests
 pytest
 pytest-rerunfailures
 faker
+pytest-xdist
