@@ -3,3 +3,4 @@ pytest
 pytest-rerunfailures
 faker
 pytest-xdist
+pytest-github-actions-annotate-failures
