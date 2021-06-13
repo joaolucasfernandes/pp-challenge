@@ -14,7 +14,7 @@ Fazer os seguintes cenários de automação utilizando o framework de sua prefer
 
 ## Cenários Automatizados
 Foram identificados cenários além dos propostos no desafio que achei interessante automatizar. A lista completa de cenários automatizados é:
-```
+
 - Teste de criação de usuário e validação se o mesmo existe no endpoint Listar todos os Usuários
 - Teste de alteração do nome de um usuário e a validação das alterações no endpoint Listar um unico Usuario
 - Teste de deleção de um usuário através do endpoint Deletar Usuario e verificação se o mesmo foi deletado de fato no endpoint Listar todos Usuarios e Listar um Unico Usuario
@@ -25,7 +25,7 @@ Foram identificados cenários além dos propostos no desafio que achei interessa
 - Teste de validação de credenciais na criação de usuário
 - Teste de validação de credenciais na deleção de usuário
 - Teste de validação de credenciais na alteração dos dados do usuário
-```
+
 ## Framework escolhido
 
 O framework escolhido para a implementação dos testes foi o pytest (Python)
