@@ -8,7 +8,6 @@ class UserClient(BaseApi):
 
     def post_user(self, payload, token):
         headers = self.get_default_headers(token)
-        print(payload)
         response = requests.post('{}/users'.format(self.BASE_URL), headers=headers, json=payload)
         return response
 

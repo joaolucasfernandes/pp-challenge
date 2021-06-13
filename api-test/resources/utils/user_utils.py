@@ -19,9 +19,16 @@ def get_valid_user_payload():
     payload['status'] = 'Active'
     return payload
 
-def search_values_in_a_json(json, field, value):
+def search_and_return_values_from_a_field_in_a_json(json, field, value):
     matches = []
     for data in json:
         if data[field] == value:
             matches.append(data[field])
+    return matches
+
+def search_and_return_objects_from_matched_field_in_a_json(json, field, value):
+    matches = []
+    for data in json:
+        if data[field] == value:
+            matches.append(data)
     return matches

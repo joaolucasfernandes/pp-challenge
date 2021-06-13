@@ -18,7 +18,7 @@ def test_successful_post_user():
 
     user_id = create_user_response_data['data']['id']
     user_list = json.loads(user_client.get_users(last_page=True).content)['data']
-    matched_users_with_user_id = search_values_in_a_json(user_list, 'id', user_id)
+    matched_users_with_user_id = search_and_return_values_from_a_field_in_a_json(user_list, 'id', user_id)
 
     assert create_user_request.status_code == 200
     assert create_user_response_data['code'] == 201
@@ -53,7 +53,7 @@ def test_successful_delete_user(create_new_user_and_return_data):
     delete_user_response_data = json.loads(delete_user_request.content)
 
     user_list = json.loads(user_client.get_users(last_page=True).content)['data']
-    matched_users_with_user_id = search_values_in_a_json(user_list, 'id', user_id)
+    matched_users_with_user_id = search_and_return_values_from_a_field_in_a_json(user_list, 'id', user_id)
 
     get_user_after_removing_request = user_client.get_user(user_id)
     get_user_after_removing_response_data = json.loads(get_user_after_removing_request.content)
@@ -70,7 +70,7 @@ def test_unauthorized_post_user():
 
     """
     The creation of the user before the request with wrong credentials is necessary to test this scenario because 
-    the HTTP Not Found error have precedence on Authentication errors in the app.
+    the HTTP Not Found errors are having precedence on Authentication errors in the app.
     If the authentication is verified before checking if the resource exists, this will not be necessary.
     In my opinion, this is a bug, and should be fixed on the application.
     """
@@ -87,7 +87,7 @@ def test_unauthorized_put_user(create_new_user_and_return_data):
 
     """
     The creation of the user before the request is necessary to test this scenario because 
-    the HTTP Not Found error have precedence on Authentication errors in the app.
+    the HTTP Not Found erros are having precedence on Authentication errors in the app.
     If the authentication is verified before checking if the resource exists, this will not be necessary.
     In my opinion, this is a bug, and should be fixed on the application.
     """
@@ -108,7 +108,7 @@ def test_unauthorized_delete_user(create_new_user_and_return_data):
 
     """
     The creation of the user before the request is necessary to test this scenario because 
-    the HTTP Not Found error have precedence on Authentication errors in the app.
+    the HTTP Not Found errors are having precedence on Authentication errors in the app.
     If the authentication is verified before checking if the resource exists, this will not be necessary.
     In my opinion, this is a bug, and should be fixed on the application.
     """
@@ -144,5 +144,49 @@ def test_user_not_found_on_put():
     assert put_user_response_data['code'] == 404
     assert put_user_response_data['data']['message'] == 'Resource not found'
 
-def test_post_with_empty_fields():
-    pass
+@pytest.mark.parametrize("field, expected_message", 
+                            [("name", "can't be blank"),
+                             ("email", "can't be blank"),
+                             ("gender", "can't be blank"),
+                             ("status", "can't be blank")]
+                        )
+def test_post_user_with_empty_fields(field, expected_message):
+
+    user_client = UserClient()
+    request_payload = get_valid_user_payload()
+    request_payload[field] = None
+
+    expected_error_message_payload = {'field': field, 'message': expected_message}
+
+    post_user_request_with_empty_fields = user_client.post_user(request_payload, user_client.get_auth_token())
+    post_user_response_with_empty_fields_data = json.loads(post_user_request_with_empty_fields.content)
+
+    matched_error_responses = search_and_return_objects_from_matched_field_in_a_json(post_user_response_with_empty_fields_data['data'], 'field', field)
+
+    assert post_user_request_with_empty_fields.status_code == 200
+    assert post_user_response_with_empty_fields_data['code'] == 422
+    assert len(matched_error_responses) == 1
+    assert matched_error_responses[0] == expected_error_message_payload
+
+@pytest.mark.parametrize("field, invalid_value, expected_message", 
+                            [("email", "x", "is invalid"),
+                             ("gender", "y", "can be Male or Female" ),
+                             ("status", "z", "can be Active or Inactive")]
+                        )
+def test_post_user_with_invalid_fields(field, invalid_value, expected_message):
+
+    user_client = UserClient()
+    request_payload = get_valid_user_payload()
+    request_payload[field] = invalid_value
+
+    expected_error_message_payload = {'field': field, 'message': expected_message}
+
+    post_user_request_with_invalid_fields = user_client.post_user(request_payload, user_client.get_auth_token())
+    post_user_response_with_invalid_fields_data = json.loads(post_user_request_with_invalid_fields.content)
+
+    matched_error_responses = search_and_return_objects_from_matched_field_in_a_json(post_user_response_with_invalid_fields_data['data'], 'field', field)
+
+    assert post_user_request_with_invalid_fields.status_code == 200
+    assert post_user_response_with_invalid_fields_data['code'] == 422
+    assert len(matched_error_responses) == 1
+    assert matched_error_responses[0] == expected_error_message_payload
