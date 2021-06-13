@@ -39,6 +39,7 @@ Você pode usar a sua instalação local do python para instalar e rodar os test
 Segue abaixo alguns links mostrando como montar um virtualenv:
 
 [Usando o virtualenv](https://gist.github.com/Geoyi/d9fab4f609e9f75941946be45000632b)
+
 [Usando o pyenv-virtualenv](https://www.liquidweb.com/kb/how-to-install-pyenv-virtualenv-on-ubuntu-18-04/)
 
 
