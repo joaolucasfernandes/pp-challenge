@@ -43,7 +43,7 @@ Para instalar e executar o projeto, basta ter a versão 3.6 ou maior do python i
 ```
 
 ***
-3. **Entre na pasta do projeto(pp-challenge) e rode o seguinte comando:**
+2. **Entre na pasta do projeto(pp-challenge) e rode o seguinte comando:**
 
 ```sh
 pip install -r requirements.txt`
@@ -59,11 +59,11 @@ pip install -r requirements.txt`
 
 ## Estrutura do Projeto
 ```
-|api-test (1)  
-├──resources (2)  
-│  └──clients (3) 
-│  └───utils (4) 
-└───tests (5)
+|api-test [1]  
+├──resources [2]  
+│  └──clients [3] 
+│  └───utils [4] 
+└───tests [5]
 ```
 1. `api-test` - Pasta raiz dos testes de api do projeto
 2. `resources` - Pasta que agrega diretórios com recursos a serem usados no projeto pelos testes, como clients, helpers, classes base, utils, etc...
