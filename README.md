@@ -57,6 +57,9 @@ pip install -r requirements.txt`
 
  `pytest -v -n 15 --reruns 5 --reruns-delay 1`
 
+## Github Actions
+Os testes foram colocados para rodar no github actions. A execução é feita a cada push no projeto, e você pode vê-las clicando em "Actions" no menu superior.
+
 ## Estrutura do Projeto
 ```
 |api-test [1]  
