@@ -32,21 +32,29 @@ O framework escolhido para a implementação dos testes foi o pytest (Python)
 
 ## Pré-requisitos
 
-Para instalar e executar o projeto, basta ter a versão 3.6 ou maior do python instalada na máquina
+Para instalar e executar o projeto, basta ter a versão 3.6 ou maior do python instalada na máquina.
+
+Você pode usar a sua instalação local do python para instalar e rodar os testes, ou criar um ambiente virtual(python3) para rodá-los também.
+
+Segue abaixo alguns links mostrando como montar um virtualenv:
+
+[Usando o virtualenv](https://gist.github.com/Geoyi/d9fab4f609e9f75941946be45000632b)
+[Usando o pyenv-virtualenv](https://www.liquidweb.com/kb/how-to-install-pyenv-virtualenv-on-ubuntu-18-04/)
+
 
 ## Instalação
 
 1. **Realize o clone do repositório:**
 
  ```sh
- git clone https://github.com/joaolucasfernandes/pp-challenge.git`
+ git clone https://github.com/joaolucasfernandes/pp-challenge.git
 ```
 
 ***
 2. **Entre na pasta do projeto(pp-challenge) e rode o seguinte comando:**
 
 ```sh
-pip install -r requirements.txt`
+pip install -r requirements.txt
 ```
 
 ***
