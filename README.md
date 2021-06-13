@@ -55,7 +55,9 @@ pip install -r requirements.txt`
 
 **Após instalar o projeto e suas dependências, dentro da pasta raiz do projeto (pp-challenge), execute:**
 
- `pytest -v -n 15 --reruns 5 --reruns-delay 1`
+ `pytest -v -n 15 --reruns 5 --reruns-delay 1` 
+
+ **Observação:** O parâmetro `reruns` faz com que caso um teste falhe, a execução do mesmo seja retentada por até 5 vezes, com o intervalo de 1 segundo a cada retentativa. Isso foi necessário pois a api apresenta algumas instabilidades de conectividade.
 
 ## Github Actions
 Os testes foram colocados para rodar no github actions. A execução é feita a cada push no projeto, e você pode vê-las clicando em "Actions" no menu superior.
