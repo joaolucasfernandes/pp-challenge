@@ -91,6 +91,7 @@ Os testes foram colocados para rodar no github actions. A execução é feita a 
 - Herança
 - Variáveis
 - Fixtures
+- Isolamento de Testes
 - Setup & Teardown
 - Paralelismo
 

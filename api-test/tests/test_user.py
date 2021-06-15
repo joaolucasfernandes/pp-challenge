@@ -41,14 +41,14 @@ class TestUser:
         put_payload = get_valid_user_payload()
         new_name = put_payload['name']
 
-        modified_user_request = self.user_client.put_user(payload=put_payload, token=self.user_client.get_auth_token(), id=self.user_id)
-        modified_user_response_data = json.loads(modified_user_request.content)
+        put_user_request = self.user_client.put_user(payload=put_payload, token=self.user_client.get_auth_token(), id=self.user_id)
+        put_user_response_data = json.loads(put_user_request.content)
 
-        modified_user_data = json.loads(self.user_client.get_user(self.user_id).content)['data']
+        putted_user_data = json.loads(self.user_client.get_user(self.user_id).content)['data']
 
-        assert modified_user_request.status_code == 200
-        assert modified_user_response_data['code'] == 200
-        assert modified_user_data['name'] == new_name
+        assert put_user_request.status_code == 200
+        assert put_user_response_data['code'] == 200
+        assert putted_user_data['name'] == new_name
 
     def test_successful_delete_user(self, create_new_user_and_return_data):
         self.user_id = create_new_user_and_return_data['id']
