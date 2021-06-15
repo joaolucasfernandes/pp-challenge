@@ -85,6 +85,15 @@ Os testes foram colocados para rodar no github actions. A execução é feita a 
 4. `clients` - Pasta que contém os clients usados no projeto pelos testes (Clients são classes que encapsulam algumas funcionalidades de determinadas entidades no contexto da Api (Métodos put, get, delete, post, etc))
 5. `tests` - Pasta que contém os arquivos onde os testes estão de fato implementados 
 
+### Conceitos utilizados:
+- Classes
+- Métodos 
+- Herança
+- Variáveis
+- Fixtures
+- Setup & Teardown
+- Paralelismo
+
 ### Observações adicionais
 Durante os testes, encontrei alguns bugs  e comportamentos cuja a implementação na aplicação poderia ser discutida com o time de negócios:
 
@@ -93,3 +102,4 @@ Durante os testes, encontrei alguns bugs  e comportamentos cuja a implementaçã
 3. O status da maioria dos requests feitos, retorna sempre 200, e o código de fato relacionado a resposta, fica dentro do payload da mesma, no campo code (Um request com um token inválido retorna 200 no status code, e 401 no campo code, na resposta por exemplo). Já vi muitas implementações de api, e esse é apenas um modo de se fazer. Mas acredito que seria melhor retornar o código correto já no status code. Isso faz com que os clientes da api não precisem escrever códigos que olhem para além do status code para validar respostas de erro ou validação, como um 401, por exemplo. 
 5. O timezone usado pela api é um timezone diferente do Brasil. Seria bom verificar com o time de negócios se isso não causaria problemas em algum nível.
 6. Os erros relacionados a não existência de um registro na api(404) estão tendo precedência sob erros de autenticação. Ou seja, se eu enviar um request para deletar um usuário com um id que não existe e com o token de autenticação inválido, o erro que me é retornado é o 404, antes do 401. Acredito que seria melhor fazer a verificação do token antes de realizar qualquer outra operação no sistema(neste caso, a consulta pra ver se o usuário existe ou não antes de deletar). Tanto em termos de eficiência quanto de segurança.
+
