@@ -52,7 +52,7 @@ Segue abaixo alguns links mostrando como montar um virtualenv:
 ```
 
 ***
-2. **Entre na pasta do projeto(pp-challenge) e rode o seguinte comando:**
+2. **Entre na pasta do projeto(pp-challenge) e rode o seguinte comando para instalar as dependências do projeto:**
 
 ```sh
 pip install -r requirements.txt
