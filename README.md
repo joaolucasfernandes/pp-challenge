@@ -52,10 +52,20 @@ Segue abaixo alguns links mostrando como montar um virtualenv:
 ```
 
 ***
-2. **Entre na pasta do projeto(pp-challenge) e rode o seguinte comando para instalar as dependências do projeto:**
+2. **Entre na pasta do projeto(pp-challenge) e rode o seguinte comando para instalar as dependências:**
 
 ```sh
 pip install -r requirements.txt
+```
+
+As dependências usadas neste projeto foram:
+```
+requests
+pytest
+pytest-rerunfailures
+pytest-xdist
+pytest-github-actions-annotate-failures
+faker
 ```
 
 ***
