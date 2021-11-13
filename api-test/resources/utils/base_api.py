@@ -12,7 +12,7 @@ class BaseApi:
         The token value that are hardcoded here can be replaced by a request to an auth endpoint that returns a token given a user/password(I did not find it for this api).
         For security reasons, this user and password should be obtained from environment variables or secrets(when talking about docker/kubernetes environment) also.
         """
-        return 'Bearer 4036e8a535449c1e91050813efe1a72e0d10150c410e152295b82b36e362f310'
+        return 'Bearer a46a3a7240068a78f563b5dfe533c51a3b7ef4a695387212637b37aa983f402a'
 
     def get_default_headers(self, token):
 
