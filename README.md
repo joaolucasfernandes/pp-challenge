@@ -18,7 +18,7 @@ Foram identificados cenários além dos propostos no desafio que achei interessa
 - Teste de criação de usuário e validação se o mesmo existe no endpoint Listar todos os Usuários
 - Teste de alteração do nome de um usuário e a validação das alterações no endpoint Listar um unico Usuario
 - Teste de deleção de um usuário através do endpoint Deletar Usuario e verificação se o mesmo foi deletado de fato no endpoint Listar todos Usuarios e Listar um Unico Usuario
-- Teste de validação de campos obrigatórios no endpoint de criação de usuário.
+- Teste de validação de campos obrigatórios no endpoint de criação de usuário
 - Teste de validação de campos inválidos no endpoint de criação de usuário
 - Teste de validação de tentativa de deleção de um usuário não existente
 - Teste de validação de tentativa de alteração de dados de um usuário não existente
